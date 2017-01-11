@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                  <h3 align="left">Artykuł:</h3>
+					<h4 align="left">{{ article.title }}</h4>
+
+					<form action="/articles/{{ article.id }}/add_comment/" method="post" class="form horizontal well"  align="left">{% csrf_token %}
+
+						{{ form.as_p }}
+
+						<input type="submit" class="btn btn-inverse" name="submit" value="Dodaj komentarz" />
+					</form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

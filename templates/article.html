@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+ <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                  <h2>{{ article.title }}</h2>
+                                      <div class="article-info">
+                                          Opublikowano : {{ article.created }}
+                                      </div>
+                                      <hr>
+                                      <img src="{{ article.image }}" class="article-img">
+                                      <div class="article-intro">
+                                            <hr>
+                                          <p> {{ article.content }} </p>
+                                      </div>
+
+                    <hr>
+
+                    <h3>Komentarze</h3><!-- Komentarze -->
+                    {% for c in article.comment_set.all %}
+                    <div class="comment">
+                        <p><span><em><b>{{ c.name }}</b></em></span></p>
+                        <p>{{ c.content }}</p>
+                        <p><em>Opublikowano: {{ c.published }}</em></p>
+                    </div>
+                    <hr>
+                    {% empty %}
+                            <p> Brak komentarzy, bądź pierwszy! </p>
+                    {% endfor %}
+                    <h4><a href="/articles/{{ article.id }}/add_comment">Dodaj komentarz</a></h4>
+                <hr>
+            </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

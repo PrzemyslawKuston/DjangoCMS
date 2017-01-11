@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                  <h4 align="left">Logowanie:</h4>
+										<form action="/accounts/auth/" method="post" class="form horizontal well">{% csrf_token %}
+											<label for="username">Użytkownik:</label>
+											<input type="text" name="username" value="" id="username">
+											<label for="password">Hasło:</label>
+											<input type="password" name="password" value="" id="password">
+											<br>
+											<input type="submit" class="btn btn-inverse" value="Zaloguj">
+										</form>
+									</div>
+							</div>
+					</div>
+</section>
+{% endblock %}
