@@ -1,5 +1,4 @@
 {% extends "layout.html" %}
-
 {% block content %}
 <section id="about">
         <div class="container">
@@ -8,12 +7,14 @@
                   <h3 align="left">Artykuł:</h3>
 					<h4 align="left">{{ article.title }}</h4>
 
-					<form action="/articles/{{ article.id }}/add_comment/" method="post" class="form horizontal well"  align="left">{% csrf_token %}
-
-						{{ form.as_p }}
-
-						<input type="submit" class="btn btn-inverse" name="submit" value="Dodaj komentarz" />
-					</form>
+<!--action = przekierowanie, class... formatowanie csrf generator unikalnego tokena-->
+<form action="/articles/{{ article.id }}/add_comment/" method="post" class="form horizontal well">
+ {% csrf_token %}
+<!--dynamiczne wprowadzanie formularza, kazda linijka formularza bedzie w "p"-->
+	{{ form.as_p }}
+	<!--przycisk-->
+	<input type="submit" class="btn btn-inverse" name="submit" value="Dodaj komentarz" />
+</form>
                 </div>
             </div>
         </div>
